@@ -27,9 +27,24 @@ body{
 
 .card:hover{
     background-color: rgb(42, 42, 54);
-    animation: transform 1s 1;
-    height: 180px;
-    width: 530px;
+    /* animation: transform 1s 1; */
+    /* height: 180px;
+    width: 530px; */
+    /* 45" linear inch sum of 3 sides. 22" x 14" x 9" luggage */
+    /* $30 + $40 (checked bags) */
+    transform: scale(1.2);
+    transition: all .4s;
+}
+
+.card:hover .name, .card:hover .place {
+    color: white;
+    transition: color .4s;
+}
+
+.card:hover .age {
+    background-color: white;
+    color: #333;
+    transition: all .4s;
 }
 
 .age{
@@ -68,18 +83,6 @@ body{
     text-align: center;
     color: #636363;
 }
-
-@keyframes transform{
-    0%{
-        height: 150px;
-        width: 500px;
-    }
-
-    100%{
-        height: 180px;
-        width: 530px;
-    }
-  }
 
 /*create your code below*/
 
