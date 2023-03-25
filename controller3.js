@@ -30,17 +30,30 @@ let cardList = [
      place: "1st",
      name: "Mochi" 
   },
-
   {
       age: 16,
       place: "2nd",
       name: "Derek", 
    },
-
    new Person(21,"3rd","Annie")
 ];
 
+let isPageLoaded = false;
+let globalArrayToStore = [];
+
 function webPage(){
+  if (!isPageLoaded) {
+    let localStorageArrayString = localStorage.getItem("arrayOfCards");
+    let cardArrayData;
+
+    if (localStorageArrayString) {
+      cardArrayData = JSON.parse(localStorageArrayString);
+      cardList.push(...cardArrayData); // for rendering
+      globalArrayToStore.push(...cardArrayData); // for saving-reload
+    }
+    isPageLoaded = true;
+  }
+
   document.getElementById("bigBox").innerHTML = ``;
 
   for(let i = 0; i < cardList.length; i++){
@@ -50,15 +63,13 @@ function webPage(){
           <div class="place">${cardList[i].place}</div>
           <div class="name">${cardList[i].name}</div>
       </div>
-  `;
+    `;
   }
 
   document.getElementById("bigBox").innerHTML += `
-  <button id="popupButton" onclick="popupButton()">+</button>
-`;
-
-console.log(cardList);
-
+    <button id="popupButton" onclick="popupButton()">+</button>
+  `;
+  console.log(cardList);
 }
 
 webPage();
@@ -81,42 +92,23 @@ function addToArray(){
   let age = document.getElementById("ageInput").value;
   let place = document.getElementById("placeInput").value;
   let name = document.getElementById("nameInput").value;
-  let object = new Person(age, place, name);
+  let cardObject = new Person(age, place, name);
   
+  // add to local storage for reload
+  saveProgressToLocalStorage(cardObject);
 
-  localStorage.setItem("objects", JSON.stringify(object));
-  let objectsData = JSON.parse(localStorage.getItem("objects"));
-
-  console.log(objectsData);
-
-  cardList.push(objectsData);
-
-  console.log(localStorage);
-
-  // cardList = localStorage;
-
+  // add to ui
+  cardList.push(cardObject);
   webPage();
 }
 
-
+function saveProgressToLocalStorage(cardObject) {
+  globalArrayToStore.push(cardObject);
+  localStorage.setItem("arrayOfCards", JSON.stringify(globalArrayToStore));
+}
 
 function clearAll(){
   localStorage.clear();
   cardList = [];
   webPage();
 }
-
-
-// let colorsArray = ["blue", "green", "white"];
-// localStorage.setItem("colors", JSON.stringify(colorsArray));
-
-// let numbersArray = [1, 2, 3];
-// localStorage.setItem("numbers", JSON.stringify(numbersArray));
-
-// let colorsData = JSON.parse(localStorage.getItem("colors"));
-// console.log(colorsData);
-
-// let numbersData = JSON.parse(localStorage.getItem("numbers"));
-// console.log(numbersData);
-
-// localStorage.clear();
