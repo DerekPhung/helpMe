@@ -94,8 +94,7 @@ function addToArray(){
   console.log(localStorage);
 
   // cardList = localStorage;
- 
- 
+
   webPage();
 }
 
@@ -114,10 +113,10 @@ function clearAll(){
 // let numbersArray = [1, 2, 3];
 // localStorage.setItem("numbers", JSON.stringify(numbersArray));
 
-let colorsData = JSON.parse(localStorage.getItem("colors"));
-console.log(colorsData);
+// let colorsData = JSON.parse(localStorage.getItem("colors"));
+// console.log(colorsData);
 
-let numbersData = JSON.parse(localStorage.getItem("numbers"));
-console.log(numbersData);
+// let numbersData = JSON.parse(localStorage.getItem("numbers"));
+// console.log(numbersData);
 
 // localStorage.clear();
