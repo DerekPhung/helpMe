@@ -16,7 +16,7 @@ body{
 
 .card{
     border: 1px solid black;
-    border-top: 3px solid rgb(0, 129, 129);
+    border-top: 5px solid dodgerblue;
     height: 150px;
     width: 500px;
     margin: auto;
@@ -41,9 +41,9 @@ body{
     line-height: 80px;
     display: inline-block;
     text-align: center;
-    background-color: aquamarine;
+    background-color: dodgerblue;
     margin-left: 20px;
-    color: blueviolet;
+    color: white;
 }
 
 .place{
@@ -55,7 +55,7 @@ body{
     margin-top: 50px;
     margin-right: 20px;
     text-align: center;
-    color: blueviolet;
+    color: #333;
 }
 
 .name{
@@ -66,7 +66,7 @@ body{
     display: inline-block;
     margin-bottom: 40px;
     text-align: center;
-    color: blueviolet;
+    color: #636363;
 }
 
 @keyframes transform{
