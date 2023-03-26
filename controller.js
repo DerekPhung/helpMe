@@ -6,7 +6,6 @@
 // adds the object into the existing array (card) and
 // the form will disappear letting user see the update
 
-
 /**
  * name: Derek
  * date: 2/20/2023
@@ -59,7 +58,7 @@ function webPage(){
   for(let i = 0; i < cardList.length; i++){
       document.getElementById("bigBox").innerHTML += `
       <div class="card">
-          <div class="age">${cardList[i].age}</div>
+          <div class="age">${cardList[i].age ? cardList[i].age : '&nbsp;'}</div>
           <div class="place">${cardList[i].place}</div>
           <div class="name">${cardList[i].name}</div>
       </div>
@@ -67,7 +66,9 @@ function webPage(){
   }
 
   document.getElementById("bigBox").innerHTML += `
-    <button id="popupButton" onclick="popupButton()">+</button>
+    <div class="add-more-container">
+      <button id="popupButton" onclick="popupButton()">+ Add Card</button>
+    </div>
   `;
   console.log(cardList);
 }
@@ -112,3 +113,8 @@ function clearAll(){
   cardList = [];
   webPage();
 }
+
+addEventListener("click", (event) => {
+  const audioElement = document.getElementById('audio');
+  audioElement.play();
+});

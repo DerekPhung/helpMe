@@ -3,35 +3,34 @@
 *  buttons to be clear and visible
 *  each fields/input should be formatted centerly
 */
-
+html { background-color: black; }
 body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background: url(./rain.gif);
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
 }
 #bigBox{
-    /* border: 3px solid black; */
-    height: 900px;
-    width: 900px;
+    max-width: 900px;
     margin: auto;
+    padding-top: 20px;
 }
 
 .card{
+    background-color: rgba(255, 255, 255, .7);
     border: 1px solid black;
     border-top: 5px solid dodgerblue;
     height: 150px;
-    width: 500px;
+    max-width: 500px;
     margin: auto;
-    margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
 }
 
 .card:hover{
-    background-color: rgb(42, 42, 54);
-    /* animation: transform 1s 1; */
-    /* height: 180px;
-    width: 530px; */
-    /* 45" linear inch sum of 3 sides. 22" x 14" x 9" luggage */
-    /* $30 + $40 (checked bags) */
+    background-color: rgba(42, 42, 54, .75);
     transform: scale(1.2);
     transition: all .4s;
 }
@@ -48,7 +47,6 @@ body{
 }
 
 .age{
-    /* border: 3px solid green; */
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -62,7 +60,6 @@ body{
 }
 
 .place{
-    /* border: 3px solid blue; */
     height: 40px;
     width: 60px;
     font-size: 30px;
@@ -74,20 +71,34 @@ body{
 }
 
 .name{
-    /* border: 3px solid aquamarine; */
     height: 20px;
     width: 50px;
     margin: auto;
     display: inline-block;
     margin-bottom: 40px;
     text-align: center;
-    color: #636363;
+    color: #333;
 }
 
 /*create your code below*/
 
-#popupButton{
-   margin-left: 450px;
+.add-more-container {
+    text-align: center;
+}
+#popupButton {
+    background: none;
+    border: 2px solid white;
+    color: #fff;
+    width: 200px;
+    border-radius: 50px;
+    padding: .5rem;
+    font-size: 1rem;
+}
+
+#popupButton:hover {
+    background: white;
+    color: #333;
+    cursor: pointer;
 }
 
 #popupBox{
@@ -102,3 +113,5 @@ body{
     display: grid;
     place-content: center;
 }
+
+#audContainer { display: none; }
