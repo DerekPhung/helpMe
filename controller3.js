@@ -24,25 +24,11 @@ class Person{
   }
 }
 
-let cardList = [
-  {
-     age: 2,
-     place: "1st",
-     name: "Mochi" 
-  },
-
-  {
-      age: 16,
-      place: "2nd",
-      name: "Derek", 
-   },
-
-   new Person(21,"3rd","Annie")
-];
+let cardList = [];
 
 function webPage(){
   document.getElementById("bigBox").innerHTML = ``;
-
+  loadFromLocalStorage();
   for(let i = 0; i < cardList.length; i++){
       document.getElementById("bigBox").innerHTML += `
       <div class="card">
@@ -57,13 +43,9 @@ function webPage(){
   <button id="popupButton" onclick="popupButton()">+</button>
 `;
 
-console.log(cardList);
-
 }
 
 webPage();
-
-
 
 function popupButton(){
   document.getElementById("bigBox").innerHTML +=`
@@ -83,19 +65,8 @@ function addToArray(){
   let name = document.getElementById("nameInput").value;
   let object = new Person(age, place, name);
   
-
-  localStorage.setItem("objects", JSON.stringify(object));
-  let objectsData = JSON.parse(localStorage.getItem("objects"));
-
-  console.log(objectsData);
-
-  cardList.push(objectsData);
-
-  console.log(localStorage);
-
-  // cardList = localStorage;
- 
- 
+  cardList.push(object);
+  saveToLocalStorage();
   webPage();
 }
 
@@ -107,17 +78,34 @@ function clearAll(){
   webPage();
 }
 
+function loadFromLocalStorage(){
+  if(JSON.parse(localStorage.getItem("objects")) == null){
+    cardList = [
+      {
+         age: 2,
+         place: "1st",
+         name: "Mochi" 
+      },
+    
+      {
+          age: 16,
+          place: "2nd",
+          name: "Derek", 
+       },
+    
+       new Person(21,"3rd","Annie")
+    ];
+  }
 
-// let colorsArray = ["blue", "green", "white"];
-// localStorage.setItem("colors", JSON.stringify(colorsArray));
+  else{
+    cardList = JSON.parse(localStorage.getItem("objects"));
+  }
+  
+}
 
-// let numbersArray = [1, 2, 3];
-// localStorage.setItem("numbers", JSON.stringify(numbersArray));
+function saveToLocalStorage(){
+  localStorage.setItem("objects", JSON.stringify(cardList));
+}
 
-let colorsData = JSON.parse(localStorage.getItem("colors"));
-console.log(colorsData);
 
-let numbersData = JSON.parse(localStorage.getItem("numbers"));
-console.log(numbersData);
 
-// localStorage.clear();
